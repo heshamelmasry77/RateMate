@@ -30,3 +30,27 @@ Migrating to CreateUsers (20240920092355)
   [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240920092355')[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('792910889919098370')[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:34:51 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:34:55 +0200
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:38:58 +0200
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"testuser", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
