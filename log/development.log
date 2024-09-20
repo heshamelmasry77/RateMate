@@ -30,3 +30,128 @@ Migrating to CreateUsers (20240920092355)
   [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240920092355')[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('792910889919098370')[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:34:51 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:34:55 +0200
+  
+ActionController::RoutingError (uninitialized constant Api):
+
+Causes:
+ActionDispatch::MissingController (uninitialized constant Api)
+NameError (uninitialized constant Api)
+  
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:38:58 +0200
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"testuser", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2024-09-20 13:54:34 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/hesh77/.rbenv/versions/3.2.5/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/hesh77/.rbenv/versions/3.2.5/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.3ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2024-09-20 13:54:50 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/hesh77/.rbenv/versions/3.2.5/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/hesh77/.rbenv/versions/3.2.5/lib/ruby/gems/3.2.0/gems/railties-7.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:55:18 +0200
+Processing by Api::V1::UsersController#create as */*
+Completed 400 Bad Request in 6ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:19:in `user_params'
+app/controllers/api/v1/users_controller.rb:7:in `create'
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:56:24 +0200
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"testuser", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (5.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'testuser' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`username`, `email`, `password_digest`, `created_at`, `updated_at`) VALUES ('testuser', 'testuser@example.com', '$2a$12$6XdpQEN8f9WrzdXLmvPyGO7lF9DvaeNrIc3fjWJ9zaD4OH1YAMF9O', '2024-09-20 11:56:24.373092', '2024-09-20 11:56:24.373092')[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+Completed 201 Created in 265ms (Views: 0.1ms | ActiveRecord: 15.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users" for ::1 at 2024-09-20 13:56:49 +0200
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"testuser", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'testuser' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+Completed 422 Unprocessable Content in 234ms (Views: 0.1ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2024-09-20 13:59:10 +0200
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Completed 202 Accepted in 225ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2024-09-20 13:59:25 +0200
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Completed 401 Unauthorized in 229ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2024-09-20 13:59:29 +0200
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Completed 202 Accepted in 236ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[35m (19.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS `rate_mate_development`[0m
+  [1m[35m (3.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS `rate_mate_test`[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE DATABASE `rate_mate_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE DATABASE `rate_mate_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (10.3ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('792910889919098370', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' ORDER BY `ar_internal_metadata`.`key` ASC LIMIT 1[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2024-09-20 12:03:35.599042', '2024-09-20 12:03:35.599044')[0m
+Migrating to CreateUsers (20240920092355)
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` varchar(255), `email` varchar(255), `password_digest` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240920092355')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('792910889919098370')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
