@@ -9,7 +9,7 @@
 - **User Login**: Registered users can log in to receive a JWT for authenticated requests.
 - **JWT Authentication**: Secure authentication using JWT, with tokens expiring after 45 minutes.
 - **Password Security**: Passwords are hashed using bcrypt for security.
-- **Currency Conversion**: Convert amounts between different currencies using real-time exchange rates (Protected Route).
+- **Currency Conversion**: Convert amounts between different currencies using real-time or historical exchange rates (Protected Route).
 - **API Namespace**: All routes are under the `/api/v1` namespace for versioning.
 - **CORS Enabled**: Configured to allow requests from different origins (e.g., a frontend application).
 
@@ -171,20 +171,31 @@ Ensure you have the following installed:
 ### **Currency Conversion (Protected)**
 
 - **URL**: `POST /api/v1/convert`
-- **Description**: Converts an amount from one currency to another using real-time exchange rates. This is a protected route and requires a valid JWT token.
+- **Description**: Converts an amount from one currency to another using real-time or historical exchange rates. This is a protected route and requires a valid JWT token.
 
 #### Request Headers:
 
 - `Content-Type: application/json`
 - `Authorization`: `Bearer your_jwt_token`
 
-#### Request Body:
+#### Request Body (without date for latest exchange rates):
 
 ```json
 {
    "from": "USD",
    "to": "EUR",
    "amount": 100
+}
+```
+
+#### Request Body (with date for historical exchange rates):
+
+```json
+{
+   "from": "USD",
+   "to": "EUR",
+   "amount": 100,
+   "date": "2022-05-01"
 }
 ```
 
