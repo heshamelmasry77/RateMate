@@ -16,6 +16,4 @@ test:
 
 production:
   <<: *default
-  database: rate_mate_production
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  url: <%= ENV['MYSQL_URL'] %>
