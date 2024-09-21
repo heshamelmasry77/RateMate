@@ -155,3 +155,118 @@ Migrating to CreateUsers (20240920092355)
   [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20240920092355')[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('792910889919098370')[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users" for ::1 at 2024-09-21 16:18:41 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"testuser", "email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`username` = 'testuser' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+Completed 422 Unprocessable Content in 229ms (Views: 0.1ms | ActiveRecord: 7.4ms (2 queries, 0 cached) | GC: 1.0ms)
+
+
+[dotenv] Set [36mFIXER_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:15:33 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:16:03 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:19:20 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+[dotenv] Set [36mFIXER_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:04 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100}}
+Completed 200 OK in 452ms (Views: 0.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:19 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100}}
+Completed 200 OK in 594ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:27 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"EGP", "to"=>"EUR", "amount"=>100, "currency"=>{"from"=>"EGP", "to"=>"EUR", "amount"=>100}}
+Completed 200 OK in 596ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:38 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"EUR", "to"=>"egp", "amount"=>100, "currency"=>{"from"=>"EUR", "to"=>"egp", "amount"=>100}}
+Completed 500 Internal Server Error in 611ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `/' for nil:NilClass):
+  
+app/controllers/api/v1/currency_controller.rb:45:in `fetch_exchange_rate'
+app/controllers/api/v1/currency_controller.rb:18:in `convert'
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:45 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"EUR", "to"=>"EGP", "amount"=>100, "currency"=>{"from"=>"EUR", "to"=>"EGP", "amount"=>100}}
+Completed 200 OK in 598ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:21:55 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"EUR", "to"=>"USD", "amount"=>100, "currency"=>{"from"=>"EUR", "to"=>"USD", "amount"=>100}}
+Completed 200 OK in 606ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:22:08 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100}}
+Completed 200 OK in 608ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:22:18 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:22:19 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:22:43 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100}}
+Completed 200 OK in 606ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 18:23:03 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>0, "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>0}}
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
