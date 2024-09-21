@@ -37,6 +37,11 @@ gem "mysql2", ">= 0.4.4"
 gem "dotenv-rails", groups: [ :development, :test ]
 gem "http"
 
+group :development, :test do
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false # For Rails-specific linting
+end
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
