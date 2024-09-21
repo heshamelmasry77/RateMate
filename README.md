@@ -9,7 +9,7 @@
 - **User Login**: Registered users can log in to receive a JWT for authenticated requests.
 - **JWT Authentication**: Secure authentication using JWT, with tokens expiring after 45 minutes.
 - **Password Security**: Passwords are hashed using bcrypt for security.
-- **Currency Conversion**: Convert amounts between different currencies using real-time exchange rates.
+- **Currency Conversion**: Convert amounts between different currencies using real-time exchange rates (Protected Route).
 - **API Namespace**: All routes are under the `/api/v1` namespace for versioning.
 - **CORS Enabled**: Configured to allow requests from different origins (e.g., a frontend application).
 
@@ -168,22 +168,23 @@ Ensure you have the following installed:
 }
 ```
 
-### **Currency Conversion**
+### **Currency Conversion (Protected)**
 
 - **URL**: `POST /api/v1/convert`
-- **Description**: Converts an amount from one currency to another using real-time exchange rates.
+- **Description**: Converts an amount from one currency to another using real-time exchange rates. This is a protected route and requires a valid JWT token.
 
 #### Request Headers:
 
 - `Content-Type: application/json`
+- `Authorization`: `Bearer your_jwt_token`
 
 #### Request Body:
 
 ```json
 {
-  "from": "USD",
-  "to": "EUR",
-  "amount": 100
+   "from": "USD",
+   "to": "EUR",
+   "amount": 100
 }
 ```
 
@@ -194,11 +195,11 @@ Ensure you have the following installed:
 
 ```json
 {
-  "from": "USD",
-  "to": "EUR",
-  "original_amount": 100,
-  "converted_amount": 84.23,
-  "exchange_rate": 0.8423
+   "from": "USD",
+   "to": "EUR",
+   "original_amount": 100,
+   "converted_amount": 84.23,
+   "exchange_rate": 0.8423
 }
 ```
 
@@ -231,7 +232,7 @@ We have successfully deployed the **RateMate** application on **Railway**, utili
 - **Database**: MySQL
 - **Web Server**: Puma
 - **Automated Migrations**: Migrations are executed before the Puma server starts using the following command:
-  
+
   ```bash
   bundle exec rails db:migrate && bundle exec puma -C config/puma.rb -e production
   ```

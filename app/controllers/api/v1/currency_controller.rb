@@ -1,7 +1,8 @@
 module Api
   module V1
     class CurrencyController < ApplicationController
-      skip_before_action :authorized # Skip JWT authentication for this controller TESTING
+      # skip_before_action :authorized # Skip JWT authentication for this controller TESTING
+      before_action :authorized # Enforce authentication
 
       require "http"
 
