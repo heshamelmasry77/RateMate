@@ -3,13 +3,13 @@
 
 **RateMate** is a **Ruby on Rails** API application that allows users to convert currency amounts based on the latest exchange rates. 🔄
 
-
 ## Features
 
 - **User Registration**: Users can register with a username, email, and password.
 - **User Login**: Registered users can log in to receive a JWT for authenticated requests.
 - **JWT Authentication**: Secure authentication using JWT, with tokens expiring after 45 minutes.
 - **Password Security**: Passwords are hashed using bcrypt for security.
+- **Currency Conversion**: Convert amounts between different currencies using real-time exchange rates.
 - **API Namespace**: All routes are under the `/api/v1` namespace for versioning.
 - **CORS Enabled**: Configured to allow requests from different origins (e.g., a frontend application).
 
@@ -21,6 +21,7 @@
 - **bcrypt**
 - **jwt**
 - **rack-cors**
+- **Fixer.io API** for currency exchange rates
 
 ## Getting Started
 
@@ -165,6 +166,58 @@ Ensure you have the following installed:
 }
 ```
 
+### **Currency Conversion**
+
+- **URL**: `POST /api/v1/convert`
+- **Description**: Converts an amount from one currency to another using real-time exchange rates.
+
+#### Request Headers:
+
+- `Content-Type: application/json`
+
+#### Request Body:
+
+```json
+{
+  "from": "USD",
+  "to": "EUR",
+  "amount": 100
+}
+```
+
+#### Response:
+
+- **Status**: `200 OK`
+- **Body**:
+
+```json
+{
+  "from": "USD",
+  "to": "EUR",
+  "original_amount": 100,
+  "converted_amount": 84.23,
+  "exchange_rate": 0.8423
+}
+```
+
+---
+
+### Linting with RuboCop
+
+This project uses **RuboCop** for linting and enforcing Ruby style guidelines.
+
+To run RuboCop and check for style violations, use:
+
+```bash
+bundle exec rubocop
+```
+
+To auto-correct issues, use:
+
+```bash
+bundle exec rubocop --autocorrect
+```
+
 ---
 
 ### Successfully Deployed RateMate on Railway
@@ -176,7 +229,7 @@ We have successfully deployed the **RateMate** application on **Railway**, utili
 - **Database**: MySQL
 - **Web Server**: Puma
 - **Automated Migrations**: Migrations are executed before the Puma server starts using the following command:
-  
+
   ```bash
   bundle exec rails db:migrate && bundle exec puma -C config/puma.rb -e production
   ```
