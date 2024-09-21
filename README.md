@@ -1,7 +1,8 @@
 
-# RateMate Backend
+# 💱 RateMate Backend
 
-RateMate is a Ruby on Rails API application that allows users to convert currency amounts based on the latest exchange rates.
+**RateMate** is a **Ruby on Rails** API application that allows users to convert currency amounts based on the latest exchange rates. 🔄
+
 
 ## Features
 
