@@ -164,3 +164,21 @@ Ensure you have the following installed:
 }
 ```
 
+---
+
+### Successfully Deployed RateMate on Railway
+
+We have successfully deployed the **RateMate** application on **Railway**, utilizing a **MySQL** database for the backend. The app is configured to automatically run database migrations on every deploy, ensuring that the production environment stays in sync with our schema updates.
+
+#### Key Highlights:
+- **Platform**: Railway (using buildpacks)
+- **Database**: MySQL
+- **Web Server**: Puma
+- **Automated Migrations**: Migrations are executed before the Puma server starts using the following command:
+  
+  ```bash
+  bundle exec rails db:migrate && bundle exec puma -C config/puma.rb -e production
+  ```
+
+The app is now live and accessible at:  
+[RateMate Production](https://ratemate-production.up.railway.app/)
