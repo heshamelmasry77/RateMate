@@ -304,3 +304,66 @@ Processing by Api::V1::CurrencyController#convert as */*
 Completed 200 OK in 817ms (Views: 0.3ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+[dotenv] Set [36mFIXER_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:14:32 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01", "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:14:50 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01", "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:14:57 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01", "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2022-05-01"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2024-09-21 23:15:57 +0200
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"[FILTERED]", "password"=>"[FILTERED]", "session"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'testuser@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/v1/sessions_controller.rb:7:in `create'
+Completed 202 Accepted in 245ms (Views: 0.1ms | ActiveRecord: 5.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:16:39 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "date"=>"2022-05-01", "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100, "date"=>"2022-05-01"}}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:16:47 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EUR", "amount"=>100, "date"=>"2022-05-01", "currency"=>{"from"=>"USD", "to"=>"EUR", "amount"=>100, "date"=>"2022-05-01"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 200 OK in 732ms (Views: 0.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:16:56 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2012-05-01", "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>100, "date"=>"2012-05-01"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 200 OK in 635ms (Views: 0.2ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/convert" for ::1 at 2024-09-21 23:17:02 +0200
+Processing by Api::V1::CurrencyController#convert as */*
+  Parameters: {"from"=>"USD", "to"=>"EGP", "amount"=>1, "date"=>"2012-05-01", "currency"=>{"from"=>"USD", "to"=>"EGP", "amount"=>1, "date"=>"2012-05-01"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 200 OK in 615ms (Views: 0.4ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
