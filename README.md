@@ -22,6 +22,8 @@
 - **jwt**
 - **rack-cors**
 - **Fixer.io API** for currency exchange rates
+- **RuboCop** for linting
+- **http** gem for making HTTP requests
 
 ## Getting Started
 
@@ -229,7 +231,7 @@ We have successfully deployed the **RateMate** application on **Railway**, utili
 - **Database**: MySQL
 - **Web Server**: Puma
 - **Automated Migrations**: Migrations are executed before the Puma server starts using the following command:
-
+  
   ```bash
   bundle exec rails db:migrate && bundle exec puma -C config/puma.rb -e production
   ```
