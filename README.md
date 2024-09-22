@@ -10,6 +10,7 @@
 - **JWT Authentication**: Secure authentication using JWT, with tokens expiring after 45 minutes.
 - **Password Security**: Passwords are hashed using bcrypt for security.
 - **Currency Conversion**: Convert amounts between different currencies using real-time or historical exchange rates (Protected Route).
+- **Stored Exchange Rates**: Retrieve stored exchange rates from the database.
 - **API Namespace**: All routes are under the `/api/v1` namespace for versioning.
 - **CORS Enabled**: Configured to allow requests from different origins (e.g., a frontend application).
 
@@ -222,6 +223,40 @@ Ensure you have the following installed:
    "original_amount": 100,
    "converted_amount": 84.23,
    "exchange_rate": 0.8423
+}
+```
+
+### **Get Stored Exchange Rates**
+
+- **URL**: `GET /api/v1/exchange_rates`
+- **Description**: Retrieves stored exchange rates from the database. You can optionally provide a `date` parameter to filter rates by date.
+
+#### Request Headers:
+
+- `Content-Type: application/json`
+
+#### Request Parameters (Optional):
+
+- `date`: Specify the date to retrieve exchange rates for a specific day. If not provided, it defaults to today's date.
+
+#### Example Request:
+
+```bash
+GET /api/v1/exchange_rates?date=2023-09-21
+```
+
+#### Response:
+
+- **Status**: `200 OK`
+- **Body**:
+
+```json
+{
+   "date": "2023-09-21",
+   "rates": [
+      { "from": "USD", "to": "EUR", "rate": 0.8423 },
+      { "from": "USD", "to": "GBP", "rate": 0.7321 }
+   ]
 }
 ```
 
