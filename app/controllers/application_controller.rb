@@ -17,9 +17,11 @@ class ApplicationController < ActionController::API
   def decoded_token
     if auth_header
       token = auth_header.split(" ")[1]
+      Rails.logger.info "Token: #{token}" # Log token for debugging
       begin
         JWT.decode(token, secret_key, true, algorithm: "HS256")
-      rescue JWT::DecodeError, JWT::ExpiredSignature
+      rescue JWT::DecodeError, JWT::ExpiredSignature => e
+        Rails.logger.error "JWT Error: #{e.message}" # Log JWT errors
         nil
       end
     end
@@ -28,7 +30,9 @@ class ApplicationController < ActionController::API
   def current_user
     if decoded_token
       user_id = decoded_token[0]["user_id"]
+      Rails.logger.info "Decoded Token User ID: #{user_id}" # Log user ID from token
       @current_user ||= User.find_by(id: user_id)
+      Rails.logger.info "Current User: #{@current_user.inspect}" # Log the user details
     end
   end
 
@@ -38,8 +42,9 @@ class ApplicationController < ActionController::API
 
   def authorized
     if logged_in?
-      # Proceed as normal
+      Rails.logger.info "User is logged in"
     else
+      Rails.logger.info "User is not logged in"
       render json: { errors: [ "Please log in" ] }, status: :unauthorized
     end
   rescue JWT::ExpiredSignature
