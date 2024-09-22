@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_092355) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_22_112956) do
+  create_table "exchange_rates", charset: "utf8mb3", force: :cascade do |t|
+    t.string "base_currency"
+    t.string "target_currency"
+    t.decimal "rate", precision: 10
+    t.datetime "fetched_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "username"
     t.string "email"

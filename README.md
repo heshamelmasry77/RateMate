@@ -24,6 +24,17 @@
 - **Fixer.io API** for currency exchange rates
 - **RuboCop** for linting
 - **http** gem for making HTTP requests
+- **whenever** gem for scheduling cron jobs
+
+## Daily Exchange Rate Storage Job
+
+Implemented a scheduled job that runs every day at **12:00 AM** to retrieve the latest exchange rates from the Fixer.io API and store them in the database.
+
+- **Job Name**: `DailyExchangeRateStorageJob`
+- **Scheduler**: `whenever` gem is used to schedule the job using cron.
+- **Job Description**: This job makes an API call to Fixer.io to fetch the latest exchange rates and stores them in the `exchange_rates` table in the database. This ensures that the system always has the most up-to-date exchange rates available.
+- **Location**: The job is located in `app/jobs/daily_exchange_rate_storage_job.rb`.
+- **Schedule Configuration**: The cron job is scheduled in the `config/schedule.rb` file using the `whenever` gem.
 
 ## Getting Started
 
@@ -110,11 +121,11 @@ Ensure you have the following installed:
 
 ```json
 {
-  "user": {
-    "username": "your_username",
-    "email": "your_email@example.com",
-    "password": "your_password"
-  }
+   "user": {
+      "username": "your_username",
+      "email": "your_email@example.com",
+      "password": "your_password"
+   }
 }
 ```
 
@@ -125,12 +136,12 @@ Ensure you have the following installed:
 
 ```json
 {
-  "user": {
-    "id": 1,
-    "username": "your_username",
-    "email": "your_email@example.com"
-  },
-  "jwt": "your_jwt_token"
+   "user": {
+      "id": 1,
+      "username": "your_username",
+      "email": "your_email@example.com"
+   },
+   "jwt": "your_jwt_token"
 }
 ```
 
@@ -147,8 +158,8 @@ Ensure you have the following installed:
 
 ```json
 {
-  "email": "your_email@example.com",
-  "password": "your_password"
+   "email": "your_email@example.com",
+   "password": "your_password"
 }
 ```
 
@@ -159,12 +170,12 @@ Ensure you have the following installed:
 
 ```json
 {
-  "user": {
-    "id": 1,
-    "username": "your_username",
-    "email": "your_email@example.com"
-  },
-  "jwt": "your_jwt_token"
+   "user": {
+      "id": 1,
+      "username": "your_username",
+      "email": "your_email@example.com"
+   },
+   "jwt": "your_jwt_token"
 }
 ```
 
