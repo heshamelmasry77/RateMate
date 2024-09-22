@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   end
 
   def secret_key
-    key = Rails.application.credentials.secret_key_base
+    key = Rails.application.credentials.secret_key_base || ENV["SECRET_KEY_BASE"]
     Rails.logger.info("Secret Key: #{key}")
     key
   end
