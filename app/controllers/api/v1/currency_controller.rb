@@ -7,6 +7,23 @@ module Api
 
       require "http"
 
+      def get_exchange_rates
+        # Optional date param, defaults to today
+        date = params[:date] || Date.today.to_s
+
+        # Query for rates where fetched_at falls on the given date (ignoring time)
+        rates = ExchangeRate.where("DATE(fetched_at) = ?", date)
+
+        if rates.present?
+          render json: {
+            date: date,
+            rates: rates.map { |rate| { from: rate.base_currency, to: rate.target_currency, rate: rate.rate } }
+          }, status: :ok
+        else
+          render json: { error: "No exchange rates found for #{date}" }, status: :not_found
+        end
+      end
+
       def convert
         from_currency = params[:from]
         to_currency = params[:to]

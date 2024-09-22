@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       # Currency conversion route
       post "/convert", to: "currency#convert"
+      get "/exchange_rates", to: "currency#get_exchange_rates"
     end
   end
 
