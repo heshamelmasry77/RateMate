@@ -7,8 +7,11 @@ class ApplicationController < ActionController::API
   end
 
   def secret_key
-    Rails.application.credentials.secret_key_base
+    key = Rails.application.credentials.secret_key_base
+    Rails.logger.info("Secret Key: #{key}")
+    key
   end
+
 
   def auth_header
     request.headers["Authorization"]
