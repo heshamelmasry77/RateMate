@@ -107,6 +107,18 @@ Ensure you have the following installed:
 
    The application should now be running at `http://localhost:3000`.
 
+6. **Configure Environment Variables**
+
+   Create a `.env` file in the project root with your Fixer API key and Rails secret key:
+
+   ```
+   FIXER_API_KEY=your_fixer_api_key
+   SECRET_KEY_BASE=your_secret_key_base
+   ```
+
+   - You can get the **Fixer API key** by signing up at [Fixer.io](https://fixer.io/).
+   - To generate the **Rails secret key**, run `rails secret` and copy the output.
+
 ## API Endpoints
 
 ### **User Registration**
@@ -296,3 +308,4 @@ We have successfully deployed the **RateMate** application on **Railway**, utili
 
 The app is now live and accessible at:  
 [RateMate Production](https://ratemate-production.up.railway.app/)
+
